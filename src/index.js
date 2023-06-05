@@ -1,18 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-function Greetings() {
-    return <div>
-        <NestedComp/>
-        <ChildNestedComp/>
-    </div>;
+import './index.css'
+
+function BookList(){
+    return <sectio className="booklist">
+        <Book/>
+        <Book/>
+        <Book/>
+
+    </sectio>
 }
 
-let NestedComp = () => {
-    return <h1>Parent</h1>
-}
+const Book = () => <article>
+<Image/>
+<BookTitle/>
+<AuthorName/>
+</article>;
 
-let ChildNestedComp = () => <h3>Child</h3>
+const Image = () => (
+  <img
+    src="/Images/book-cover.jpg"
+    alt="TOO PRETTY TO DIE"
+  />
+);
+const BookTitle = () => <h2>TOO PRETTY TO DIE</h2>;
+const AuthorName = () => <p>Willow Rose</p>;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -21,4 +34,4 @@ function ReactCreateEle(){
 };
 
 //root.render(<ReactCreateEle/>);
-root.render(<Greetings />);
+root.render(<BookList />);
