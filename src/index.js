@@ -4,12 +4,12 @@ import ReactDOM from "react-dom/client";
 import './index.css'
 
 function BookList(){
-    return <sectio className="booklist">
+    return <section className="booklist">
         <Book/>
         <Book/>
         <Book/>
 
-    </sectio>
+    </section>
 }
 
 const Book = () => <article>
@@ -24,8 +24,12 @@ const Image = () => (
     alt="TOO PRETTY TO DIE"
   />
 );
-const BookTitle = () => <h2>TOO PRETTY TO DIE</h2>;
-const AuthorName = () => <p>Willow Rose</p>;
+const BookTitle = () => <h2 style={{fontSize:'2rem'}}>TOO PRETTY TO DIE</h2>;
+// in above func when we added inline css instead of a dash (-) we used camelCase 
+
+const AuthorName = () => {
+  const inlineCss = { backgroundColor:'White', fontSize:'1rem'}
+return <p style={inlineCss}>Willow Rose</p>;}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
