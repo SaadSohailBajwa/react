@@ -25,7 +25,7 @@ const Image = () => (
   />
 );
 const BookTitle = () => <h2 style={{fontSize:'2rem'}}>TOO PRETTY TO DIE</h2>;
-// in above func when we added inline css instead of a dash (-) we used camelCase 
+// in above func when we added inline css instead of a dash (-)  we used camelCase 
 
 const AuthorName = () => {
   const inlineCss = { backgroundColor:'White', fontSize:'1rem'}
