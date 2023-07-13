@@ -29,3 +29,7 @@ article{
 .booklist{
     text-transform: capitalize;
 }
+
+.secondBook{
+    height: 1rem;
+}
