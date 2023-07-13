@@ -3,32 +3,35 @@ import ReactDOM from "react-dom/client";
 
 import './index.css'
 
+
+const bookTitle = 'TOO PRETTY TO DIE'
+const img = "/Images/book-cover.jpg"
+const author = "Willow Rose"
+
 function BookList(){
     return <section className="booklist">
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
+        <Book bookTitle={bookTitle} img={img} author={author} />
+        <Book bookTitle={bookTitle} img={img} author={author}/>
+        <Book bookTitle={bookTitle} img={img} author={author}/>
+        <Book bookTitle={bookTitle} img={img} author={author}/>
 
     </section>
 }
 
-const Book = () => {
+const Book = (props) => {
 
-const bookTitle = 'TOO PRETTY TO DIE'
 
-return (
-<article>
-<img
-    src="/Images/book-cover.jpg"
-    alt="TOO PRETTY TO DIE"
-  />
-<h2>{bookTitle}</h2>
-<p>Willow Rose</p>
+  return (
+    <article>
+      <img src={props.img} alt={props.bookTitle}/>
+      <h2>{props.bookTitle}</h2>
+      <p>{props.author}</p>
+      
+      
 
-<p>{5 + 6}</p>
+    {/* <p>{5 + 6}</p> */}
 
-</article>
+    </article>
 )};
 
 
