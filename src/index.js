@@ -10,9 +10,12 @@ const firstBook = {
 };
 
 const secondBook = {
-  bookTitle : 'TOO PRETTY SHOULD DIE',
+  bookTitle : 'UGLY SHOULD DIE',
   img : "https://m.media-amazon.com/images/I/71h5+dpAriL._SL1500_.jpg",
   author : "Willam Rosa",
+  style : {
+    maxWidth: "200px"
+  }
 };
 
 const bookTitle = 'TOO PRETTY TO DIE'
@@ -21,34 +24,36 @@ const author = "Willow Rose"
 
 const style = {
   backgroundColor : "blue",
+  whiteSpace : "nomral",
 }
 
 
 function BookList(){
     return <section className="booklist">
         <Book bookTitle={firstBook.bookTitle} img={firstBook.img} author={firstBook.author} style={style}/>
-        <Book bookTitle={secondBook.bookTitle} img={secondBook.img} author={secondBook.author} />
+        <Book bookTitle={secondBook.bookTitle} img={secondBook.img} author={secondBook.author} style={secondBook.style} />
         <Book bookTitle={bookTitle} img={img} author={author}/>
         <Book bookTitle={bookTitle} img={img} author={author}/>
 
     </section>
 }
 
-const Book = (props) => {
-
+const Book = ({ bookTitle, img, author }) => {
+  // we can use either above or below verison
+  //const {bookTitle, img, author} = props
 
   return (
     <article>
-      <img src={props.img} alt={props.bookTitle} style={{maxWidth:"200px"}}/>
-      <h2 style={props.style} >{props.bookTitle}</h2>
-      <p>{props.author}</p>
-      
-      
+      <img src={img} alt={bookTitle} style={{ maxWidth: "200px" }} />
+      <h2 /* style={props.style} */ style={{ maxWidth: "200px" }}>
+        {bookTitle}
+      </h2>
+      <p>{author}</p>
 
-    {/* <p>{5 + 6}</p> */}
-
+      {/* <p>{5 + 6}</p> */}
     </article>
-)};
+  );
+};
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
