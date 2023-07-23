@@ -3,6 +3,28 @@ import ReactDOM from "react-dom/client";
 
 import './index.css'
 
+const bookArray = [
+  {
+    bookTitle: "TOO PRETTY TO DIE",
+    img: "/Images/book-cover.jpg",
+    author: "Array Willow Rose",
+  },
+  {
+    bookTitle: "TOO PRETTY TOO DIE",
+    img: "/Images/book-cover.jpg",
+    author: "Array Willow Rose",
+  },
+];
+
+
+const nameArray = ['array name 1','array name 2']
+
+const mapArray = nameArray.map((book)=>{
+  return <h1>{book+"name"}</h1>
+})
+
+
+
 const firstBook = {
   bookTitle : 'TOO PRETTY TO DIE',
   img : "/Images/book-cover.jpg",
@@ -30,10 +52,25 @@ const style = {
 
 function BookList(){
     return <section className="booklist">
-        <Book bookTitle={firstBook.bookTitle} img={firstBook.img} author={firstBook.author} style={style}/>
-        <Book bookTitle={secondBook.bookTitle} img={secondBook.img} author={secondBook.author} style={secondBook.style} />
+        <Book 
+        bookTitle={firstBook.bookTitle} 
+        img={firstBook.img} 
+        author={firstBook.author} 
+        style={style}
+        />
+
+        <Book 
+        bookTitle={secondBook.bookTitle} 
+        img={secondBook.img} 
+        author={secondBook.author} 
+        style={secondBook.style} />
+
+
+        <Book bookTitle={bookTitle} img={img} author={author}
+        />
         <Book bookTitle={bookTitle} img={img} author={author}/>
-        <Book bookTitle={bookTitle} img={img} author={author}/>
+
+        {mapArray}
 
     </section>
 }
