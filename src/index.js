@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import './index.css'
 
+//////////////////  MAP ARRAY ////////////////////////////////////
 const bookArray = [
   {
     bookTitle: "TOO PRETTY TO DIE",
@@ -15,13 +16,11 @@ const bookArray = [
     author: "Array Willow Rose",
   },
 ];
-
-
-const nameArray = ['array name 1','array name 2']
-
+const nameArray = ['array element 1','array element 2']
 const mapArray = nameArray.map((book)=>{
   return <h1>{book+"name"}</h1>
 })
+///////////////// MAP ARRAY ////////////////////////////////////
 
 
 
@@ -70,7 +69,9 @@ function BookList(){
         />
         <Book bookTitle={bookTitle} img={img} author={author}/>
 
-        {mapArray}
+        
+        {mapArray[1]}
+        {nameArray[0]+" note: this is array without map function"} 
 
     </section>
 }
