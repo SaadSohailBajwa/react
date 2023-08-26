@@ -9,11 +9,13 @@ const bookArray = [
     bookTitle: "TOO PRETTY TO DIE",
     img: "/Images/book-cover.jpg",
     author: "Array Willow Rose",
+    id:1,
   },
   {
     bookTitle: "TOO PRETTY TOO DIE",
     img: "/Images/book-cover.jpg",
     author: "Array Willow Rose",
+    id:2,
   },
 ];
 const nameArray = ['array element 1','array element 2']
@@ -24,12 +26,15 @@ const mapArray = nameArray.map((book)=>{
 
 
 
+
+//first book object
 const firstBook = {
   bookTitle : 'TOO PRETTY TO DIE',
   img : "/Images/book-cover.jpg",
   author : "Willow Rose",
 };
 
+//second book object
 const secondBook = {
   bookTitle : 'UGLY SHOULD DIE',
   img : "https://m.media-amazon.com/images/I/71h5+dpAriL._SL1500_.jpg",
@@ -39,41 +44,70 @@ const secondBook = {
   }
 };
 
+// just like object but in seperate variable form
 const bookTitle = 'TOO PRETTY TO DIE'
-const img = "/Images/book-cover.jpg"
+const imgVar = "/Images/book-cover.jpg"
 const author = "Willow Rose"
 
+
+// a CSS for something
 const style = {
   backgroundColor : "blue",
   whiteSpace : "nomral",
 }
 
-
+//////////////
+/// the main parent react component is BookList which will be rendered at the end of the doc
+////////////// 
 function BookList(){
-    return <section className="booklist">
-        <Book 
-        bookTitle={firstBook.bookTitle} 
-        img={firstBook.img} 
-        author={firstBook.author} 
-        style={style}
+    return (
+      <section className="booklist">
+        <ExampleEvent/>
+        <Book
+          bookTitle={firstBook.bookTitle}
+          img={firstBook.img}
+          author={firstBook.author}
+          style={style}
         />
 
-        <Book 
-        bookTitle={secondBook.bookTitle} 
-        img={secondBook.img} 
-        author={secondBook.author} 
-        style={secondBook.style} />
-
-
-        <Book bookTitle={bookTitle} img={img} author={author}
+        <Book
+          bookTitle={secondBook.bookTitle}
+          img={secondBook.img}
+          author={secondBook.author}
+          style={secondBook.style}
         />
-        <Book bookTitle={bookTitle} img={img} author={author}/>
 
-        
+        <Book bookTitle={bookTitle} img={imgVar} author={author} />
+        <Book bookTitle={bookTitle} img={imgVar} author={author} />
+        {/*
         {mapArray[1]}
-        {nameArray[0]+" note: this is array without map function"} 
+        {nameArray[0] + " note: this is array without map function"}
+        */}
+        
 
-    </section>
+
+
+        {/* here 2 Book components are made inside the main parent(BookList) using the map function */}
+        {bookArray.map((i,index) => {
+
+          const {img,bookTitle,author,id} = i
+          return (
+          <Book key={id} bookTitle={bookTitle+" in map 2nd arg is index "+index} img={img} author={author} />
+          
+          )
+        })}
+
+
+
+        {/* in the following we used spread opetrator to distribute object properties as props obj */}
+        {bookArray.map((book)=>{
+          
+          return (
+            <Book {...book} key={book.id}/>
+          )
+        })}
+      </section>
+    );
 }
 
 const Book = ({ bookTitle, img, author }) => {
@@ -92,6 +126,25 @@ const Book = ({ bookTitle, img, author }) => {
     </article>
   );
 };
+
+const ExampleEvent = () =>{
+  const handleFormInput = ()=>{
+    console.log("something typed in input");
+  }
+  const handleButtonClick = ()=>{
+    console.log("button was clicked")
+  }
+  return (
+    <div>
+      <h1>Example Event</h1>
+      <input
+      onChange={handleFormInput}/>
+      <button
+      onClick={handleButtonClick}
+      >Click Me</button>
+    </div>
+  )
+}
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
