@@ -56,13 +56,24 @@ const style = {
   whiteSpace : "nomral",
 }
 
+
+//props for ExampleEvent
+const submitText = "submit"
+
 //////////////
 /// the main parent react component is BookList which will be rendered at the end of the doc
 ////////////// 
 function BookList(){
     return (
       <section className="booklist">
-        <ExampleEvent/>
+        
+        
+        <ExampleEvent />
+
+        <ExampleForm submitText={submitText}/>
+        
+        
+        
         <Book
           bookTitle={firstBook.bookTitle}
           img={firstBook.img}
@@ -110,7 +121,7 @@ function BookList(){
     );
 }
 
-const Book = ({ bookTitle, img, author }) => {
+const Book = ({ bookTitle, img, author}) => {
   // we can use either above or below verison
   //const {bookTitle, img, author} = props
 
@@ -120,22 +131,33 @@ const Book = ({ bookTitle, img, author }) => {
       <h2 /* style={props.style} */ style={{ maxWidth: "200px" }}>
         {bookTitle}
       </h2>
-      <p>{author}</p>
+      <button>find id</button>
+      <p onClick={()=>{console.log(author)}}>{author}</p>
 
       {/* <p>{5 + 6}</p> */}
     </article>
   );
 };
 
+/////////////////////////////////
+/////////////////////////////////
+/////// F O R M S ///////////////
+/////////////////////////////////
+
+
+
+//// the one with black background 
 const ExampleEvent = () =>{
-  const handleFormInput = ()=>{
+  const handleFormInput = (e)=>{
     console.log("something typed in input");
+    console.log("they typed value is: "+e.target.value)
   }
-  const handleButtonClick = ()=>{
+  const handleButtonClick = (e)=>{
     console.log("button was clicked")
+    console.log(e.target.value)
   }
   return (
-    <div>
+    <div style={{backgroundColor:"grey"}}>
       <h1>Example Event</h1>
       <input
       onChange={handleFormInput}/>
@@ -144,6 +166,25 @@ const ExampleEvent = () =>{
       >Click Me</button>
     </div>
   )
+}
+
+
+///// the one without black background
+const ExampleForm = (props) => {
+  const handleFormSubmission = (E)=>{
+    E.preventDefault();
+    console.log("form submitted")
+  }
+  const submitText = props.submitText
+  return (
+    <>
+      <form onSubmit={handleFormSubmission}>
+        <input type="email"></input>
+        <button type="submit">{props.submitText+" hello"}</button>
+      </form>
+      <button type="submit" onClick={handleFormSubmission}>outside form button</button>
+    </>
+  );
 }
 
 
